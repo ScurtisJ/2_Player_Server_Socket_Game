@@ -9,7 +9,6 @@ public class Server {
     // Sockets for two players
     private Socket socket1 = null; 
     private Socket socket2 = null;
-    public static int port = 10000;
     public static int game = 1;
 
     //how many games are currently running
@@ -44,4 +43,10 @@ public class Server {
         }
 
         public static void main(String[] args) throws Exception {
-            ServerS
+            ServerSocket serverSocket = new ServerSocket(24175); // * The server should be started at the background, and it will listen for client connecting. (Use port 24175 for this program)
+            Server server = new Server(serverSocket); // Creates a new instance of the Server class
+            server.runServer();
+        }
+    }
+    
+

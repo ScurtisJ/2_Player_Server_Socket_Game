@@ -74,4 +74,11 @@ public class Client {
     }
 
     public static void main(String[] args) throws IOException {
-        Socket socket = 
+        Socket socket = new Socket("127.0.0.1", 24175); //*Connect to the server on localhost at port 24175, The client will send in a request  
+        // to the server requesting a game (for this program, you always assume the client and server is on the same machine (so you should use “127.0.0.1” as the IP address)
+
+        Client client = new Client(socket); // Create a new instance of the Client class that connects to the server
+        client.startClient(); // Start the client
+    }
+    
+}
