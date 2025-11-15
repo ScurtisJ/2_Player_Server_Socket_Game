@@ -1,5 +1,6 @@
 {
     "cSpell.words": [
         "netgame"
-    ]
+    ],
+    "java.debug.settings.onBuildFailureProceed": true
 }

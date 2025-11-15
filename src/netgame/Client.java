@@ -31,9 +31,12 @@ public class Client {
 
         String serverMessage = in.readLine();
         System.out.println("Server: " + serverMessage);
+        System.out.println("===================================");
 
         System.out.println(in.readLine()); // Read and print the Round 1 Start Message from the server
+        System.out.println("==================================="); 
         System.out.println(in.readLine()); // Read the Prompt for Round 1 from the server
+        System.out.print(in.readLine()); // Read the Prompt for Round 1 from the server
 
         out.write(scanner.nextLine()); // Clients sends its round 1 value to the server
         out.newLine();  
@@ -44,8 +47,9 @@ public class Client {
         System.out.println(in.readLine()); // "<player1 line>"
         System.out.println(in.readLine()); // "<player2 line>"
 
+        System.out.println("==================================="); 
         System.out.println(in.readLine()); // Read and print the Round 2 Start Message from the server
-        System.out.println(in.readLine()); // Read the Prompt for Round 2 from the server
+        System.out.print(in.readLine()); // Read the Prompt for Round 2 from the server
 
         out.write(scanner.nextLine()); // * Once the client receives the information, it should send in a number for round 2
         out.newLine();
@@ -53,22 +57,21 @@ public class Client {
 
         System.out.println(in.readLine()); // "Round 2 Results"
         System.out.println(in.readLine()); // "==========="
+        System.out.println(in.readLine()); // "Total Winner"
         System.out.println(in.readLine()); // "<player1 line>"
         System.out.println(in.readLine()); // "<player2 line>"
 
-        System.out.println("\n GAME OVER, PLAY AGAIN SOON!"); // Read and print the Game Over Message from the server
+        System.out.println("\nGAME OVER, PLAY AGAIN SOON!\n"); // Read and print the Game Over Message from the server
 
-        socket.close(); //*  After that, the client should disconnect from the server, and quit
+        closeConnections(); //*  After that, the client should disconnect from the server, and quit
+        scanner.close();
+    }
 
-
+    public void closeConnections() throws IOException {
+        in.close();
+        out.close();
+        socket.close();
     }
 
     public static void main(String[] args) throws IOException {
-        Socket socket = new Socket("127.0.0.1", 24175); //*Connect to the server on localhost at port 24175, The client will send in a request  
-        // to the server requesting a game (for this program, you always assume the client and server is on the same machine (so you should use “127.0.0.1” as the IP address)
-
-        Client client = new Client(socket); // Create a new instance of the Client class that connects to the server
-        client.startClient(); // Start the client
-    }
-    
-}
+        Socket socket = 
